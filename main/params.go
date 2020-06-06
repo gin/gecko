@@ -150,6 +150,9 @@ func init() {
 	throughputPort := fs.Uint("xput-server-port", 9652, "Port of the deprecated throughput test server")
 	fs.BoolVar(&Config.ThroughputServerEnabled, "xput-server-enabled", false, "If true, throughput test server is created")
 
+	// Version:
+	version := fs.Bool("version", false, "Print this build's version")
+
 	ferr := fs.Parse(os.Args[1:])
 
 	if ferr == flag.ErrHelp {
@@ -324,4 +327,10 @@ func init() {
 
 	// Router used for consensus
 	Config.ConsensusRouter = &router.ChainRouter{}
+
+	// Version:
+	if *version {
+		fmt.Println("Node:\t", node.NodeVersion, "\nDB:\t", dbVersion)
+		os.Exit(0)
+	}
 }

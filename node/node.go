@@ -57,6 +57,8 @@ var (
 
 	nodeVersion   = version.NewDefaultVersion("avalanche", 0, 5, 1)
 	versionParser = version.NewDefaultParser()
+
+	NodeVersion   = nodeVersion	// Export version number for CLI flag
 )
 
 // Node is an instance of an Ava node.
